@@ -27,7 +27,7 @@ setup(
         ],
     },
     install_requires = [
-        'Pillow,
+        'Pillow',
         'BeautifulSoup',
         'httplib2',
     ],
