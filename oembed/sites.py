@@ -5,7 +5,11 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import signals
 
-import json
+from django import VERSION
+if VERSION < (1, 5):
+    from django.utils import simplejson as json
+else:
+    import json
 
 from oembed.constants import DEFAULT_OEMBED_TTL, MIN_OEMBED_TTL, RESOURCE_TYPES
 from oembed.exceptions import AlreadyRegistered, NotRegistered, OEmbedMissingEndpoint, OEmbedException
