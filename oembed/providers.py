@@ -13,6 +13,7 @@ try:
 except ImportError:
     from StringIO import StringIO
 
+from django import VERSION
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.files import storage
@@ -22,7 +23,10 @@ from django.db.models.fields.files import ImageField, ImageFieldFile
 from django.template import RequestContext, Context
 from django.template.loader import render_to_string, get_template
 
-import json as simplejson
+if VERSION < (1, 5):
+    from django.utils import simplejson
+else:
+    import json as simplejson
 
 from oembed.constants import OEMBED_ALLOWED_SIZES, OEMBED_THUMBNAIL_SIZE
 from oembed.exceptions import OEmbedException, OEmbedHTTPException

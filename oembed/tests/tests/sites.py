@@ -1,4 +1,8 @@
-import json as simplejson
+from django import VERSION
+if VERSION < (1, 5):
+    from django.utils import simplejson
+else:
+    import json as simplejson
 
 import oembed
 from oembed.exceptions import AlreadyRegistered, NotRegistered, OEmbedMissingEndpoint
