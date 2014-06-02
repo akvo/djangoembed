@@ -4,8 +4,13 @@ from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse, get_resolver
 from django.http import HttpResponse, HttpResponseBadRequest, Http404
 from django.template import defaultfilters, RequestContext
-from django.utils import simplejson
 from django.utils.encoding import smart_str
+
+from django import VERSION
+if VERSION < (1, 5):
+    from django.utils import simplejson
+else:
+    import json as simplejson
 
 import oembed
 from oembed.consumer import OEmbedConsumer
